@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Rutas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Lista de Rutas</h1>
+            <div class="buttons">
+                <a class="button is-success" href="/rutas/crear">Crear Ruta</a>
+            </div>
+            <table class="table is-fullwidth is-striped is-hoverable">
+                <thead>
+                    <tr>
+                        <th>Origen</th>
+                        <th>Destino</th>
+                        <th>Fecha</th>
+                        <th>Hora de salida</th>
+                        <th>Precio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="ruta : ${rutas}">
+                        <td th:text="${ruta.origen}">Origen</td>
+                        <td th:text="${ruta.destino}">Destino</td>
+                        <td th:text="${#dates.format(ruta.fecha, 'yyyy-MM-dd')}">Fecha</td>
+                       <td th:text="${#strings.substring(ruta.horaSalida, 0, 5)}">Hora de salida</td>
+                       
+                        <td th:text="${ruta.precio}">Precio</td>
+                        <td>
+                            <div class="buttons">
+                                <a class="button is-link is-light" th:href="@{'/rutas/editar/' + ${ruta.id}}">Editar</a>
+                                <a class="button is-danger is-light" th:href="@{'/rutas/eliminar/' + ${ruta.id}}">Eliminar</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+         <a href="/dashboard" class="button is-primary btn-regresar">Regresar</a>
+    </section>
+</body>
+</html>

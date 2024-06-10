@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestionar Usuarios</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .ui.container {
+            margin-top: 20px;
+        }
+        .ui.segment {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        .ui.header {
+            margin-top: 0;
+        }
+        .ui.table {
+            margin-top: 20px;
+        }
+        .ui.purple.button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ui container">
+        <div class="ui segment">
+            <h1 class="ui header">Gestionar Usuarios</h1>
+            <table class="ui celled table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aquí puedes iterar sobre la lista de usuarios y mostrarlos en la tabla -->
+                    <tr>
+                        <td>Usuario 1</td>
+                        <td>usuario1@example.com</td>
+                        <td>
+                            <button class="ui purple button">Editar</button>
+                            <button class="ui red button">Eliminar</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Usuario 2</td>
+                        <td>usuario2@example.com</td>
+                        <td>
+                            <button class="ui purple button">Editar</button>
+                            <button class="ui red button">Eliminar</button>
+                        </td>
+                    </tr>
+                    <!-- Repite esta estructura para cada usuario -->
+                </tbody>
+            </table>
+            <button class="ui primary button">Agregar Usuario</button>
+        </div>
+    </div>
+</body>
+</html>

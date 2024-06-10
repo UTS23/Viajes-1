@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .ui.container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .content {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 800px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .image {
+            flex: 1;
+            padding: 20px;
+        }
+        .form-container {
+            flex: 1;
+            padding: 20px;
+        }
+        .ui.header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .ui.stacked.segment .field {
+            margin-bottom: 20px;
+        }
+        .ui.primary.button {
+            width: 100%;
+        }
+        .ui.success.message,
+        .ui.error.message {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ui container">
+        <div class="content">
+            <div class="image">
+                <img src="https://viajesbus.com/wp-content/uploads/2024/01/logovije.png" alt="Imagen">
+            </div>
+            <div class="form-container">
+                <h1 class="ui header">Registro de Usuario</h1>
+                <p>Completa el formulario a continuación para crear tu cuenta.</p>
+                <form class="ui form" th:action="@{/usuarios/registro}" th:object="${usuario}" method="post">
+                    <div class="ui stacked segment">
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="user icon"></i>
+                                <input type="text" id="nombre" th:field="*{nombre}" placeholder="Nombre" />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="envelope icon"></i>
+                                <input type="email" id="correo" th:field="*{correo}" placeholder="Correo" />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <i class="lock icon"></i>
+                                <input type="password" id="contraseña" th:field="*{contraseña}" placeholder="Contraseña" />
+                            </div>
+                        </div>
+                        <button class="ui primary button" type="submit">Registrar</button>
+                        <div class="ui success message">
+                            <div class="header">¡Registro exitoso!</div>
+                            <p>Tu cuenta ha sido creada correctamente. ¡Bienvenido!</p>
+                        </div>
+                        <div class="ui error message">
+                            <div class="header">Error en el registro</div>
+                            <p>Ha ocurrido un error al intentar crear tu cuenta. Por favor, inténtalo de nuevo más tarde.</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

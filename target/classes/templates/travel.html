@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Rutas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        /* Estilos para la etiqueta p */
+        p.transport {
+            font-size: 24px; /* Tamaño de fuente */
+            font-weight: bold; /* Negrita */
+            color: #f2711c; /* Color de texto */
+            text-transform: uppercase; /* Convertir texto a mayúsculas */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra de texto */
+            margin-bottom: 10px; /* Espaciado inferior */
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="#">
+               <p class="transport">TRANSPORTE EL MEJOR</p>
+            </a>
+
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/">
+                    Inicio
+                </a>
+
+                <a class="navbar-item" href="/rutas/or">
+                    Acerca de
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link" href="#">
+                        Más
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="#">
+                            Contáctanos
+                        </a>
+                        <a class="navbar-item" href="#">
+                            Ayuda
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-primary" href="/usuarios/registro">
+                            <strong>Registrarse</strong>
+                        </a>
+                        <a class="button is-light" href="/usuarios/login">
+                            Iniciar Sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Lista de Rutas</h1>
+            <!-- Campo de búsqueda -->
+            
+            <div class="columns is-multiline">
+                <div class="column is-one-third" th:each="ruta : ${rutas}">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="content">
+                                <p>
+                                    <strong>Origen:</strong> <span th:text="${ruta.origen}">Origen</span>
+                                </p>
+                                <p>
+                                    <strong>Destino:</strong> <span th:text="${ruta.destino}">Destino</span>
+                                </p>
+                                <p>
+                                    <strong>Fecha:</strong> <span th:text="${#dates.format(ruta.fecha, 'yyyy-MM-dd')}">Fecha</span>
+                                </p>
+                                <p>
+                                    <strong>Hora de salida:</strong> <span th:text="${#strings.substring(ruta.horaSalida, 0, 5)}">Hora de salida</span>
+                                </p>
+                                <p>
+                                    <strong>Precio:</strong> <span th:text="${ruta.precio}">Precio</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+   
+</body>
+</html>
+

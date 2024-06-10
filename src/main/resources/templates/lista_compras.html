@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Compras</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Lista de Compras</h1>
+        <div class="columns is-multiline">
+            <div class="column is-one-third" th:each="compra : ${compras}">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <p>
+                                <strong>ID de la Compra:</strong> <span th:text="${compra.id}">ID de la Compra</span>
+                            </p>
+                            <p>
+                                <strong>ID del Usuario:</strong> <span th:text="${compra.usuarioId}">ID del Usuario</span>
+                            </p>
+                            <p>
+                                <strong>Fecha de Compra:</strong> <span th:text="${#dates.format(compra.fechaCompra, 'yyyy-MM-dd')}">Fecha de Compra</span>
+                            </p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

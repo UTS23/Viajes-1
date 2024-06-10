@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Usuarios</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+</head>
+<body style="padding: 20px;">
+
+    <div class="ui container">
+        <h1 class="ui dividing header">Lista de Usuarios</h1>
+        <table class="ui celled table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Contraseña</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="usuario : ${usuarios}">
+                    <td th:text="${usuario.nombre}">Nombre</td>
+                    <td th:text="${usuario.correo}">Correo</td>
+                    <td>
+                        <span class="password-mask" th:text="${usuario.contraseña}">******</span>
+                        
+                    </td>
+                    <td>
+                        <a class="ui button blue" th:href="@{'/usuarios/editar/' + ${usuario.id}}">Editar</a>
+                        <a class="ui button red" th:href="@{'/usuarios/eliminar/' + ${usuario.id}}">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <a class="ui button primary" th:href="@{/usuarios/crear}">Crear Usuario</a>
+        </div>
+    </div>
+
+    
+
+</body>
+</html>
+
+

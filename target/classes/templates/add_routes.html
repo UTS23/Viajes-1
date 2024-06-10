@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Rutas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .ui.container {
+            margin-top: 20px;
+        }
+        .ui.segment {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        .ui.header {
+            margin-top: 0;
+        }
+        .ui.form .field {
+            margin-bottom: 20px;
+        }
+        .ui.primary.button {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="ui container">
+        <div class="ui segment">
+            <h1 class="ui header">Agregar Rutas</h1>
+            <form class="ui form" th:action="@{/rutas/agregar}" method="post">
+                <div class="field">
+                    <label for="origen">Origen:</label>
+                    <input type="text" id="origen" name="origen" placeholder="Origen" />
+                </div>
+                <div class="field">
+                    <label for="destino">Destino:</label>
+                    <input type="text" id="destino" name="destino" placeholder="Destino" />
+                </div>
+                <div class="field">
+                    <label for="precio">Precio:</label>
+                    <input type="number" id="precio" name="precio" placeholder="Precio" />
+                </div>
+                <button class="ui primary button" type="submit">Agregar Ruta</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

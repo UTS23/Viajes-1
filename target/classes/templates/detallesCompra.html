@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles de la Compra</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <!-- Agrega aquí tus estilos personalizados si los tienes -->
+    <style>
+        .section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .details {
+            max-width: 600px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Detalles de la Compra</h1>
+            <div class="content details">
+                <!-- Agregar información básica de la compra -->
+                <p><strong>ID de Compra:</strong> <span th:text="${compra.id}"></span></p>
+                <p><strong>ID de Usuario:</strong> <span th:text="${compra.usuarioId}"></span></p>
+                <p><strong>ID de Ruta:</strong> <span th:text="${compra.rutaId}"></span></p>
+                <p><strong>Fecha de Compra:</strong> <span th:text="${#dates.format(compra.fechaCompra, 'yyyy-MM-dd HH:mm:ss')}"></span></p>
+                
+                <!-- Mostrar información adicional de la ruta asociada -->
+                <p th:if="${#fields.hasErrors('ruta')}"><strong>Error al cargar la información de la ruta</strong></p>
+                <p th:unless="${#fields.hasErrors('ruta')}">
+                    <strong>Origen:</strong> <span th:text="${ruta.origen}"></span><br>
+                    <strong>Destino:</strong> <span th:text="${ruta.destino}"></span><br>
+                    <strong>Fecha:</strong> <span th:text="${#dates.format(ruta.fecha, 'yyyy-MM-dd')}"></span><br>
+                    <strong>Hora de salida:</strong> <span th:text="${#strings.substring(ruta.horaSalida, 0, 5)}"></span><br>
+                    <strong>Precio:</strong> <span th:text="${ruta.precio}"></span><br>
+                    
+                </p>
+                
+                <!-- Agregar más detalles de la compra si es necesario -->
+            </div>
+            <!-- Agregar botón de descarga -->
+            <div class="button-container">
+                <a href="#" class="button is-primary" download="detalles_compra.html">Descargar</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+

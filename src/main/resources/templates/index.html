@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Página Principal</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    
+</head>
+<style>
+        body {
+            padding-top: 60px;
+            background-color: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .ui.container {
+            margin-top: 40px;
+        }
+        .ui.segment {
+            background-color: #fff;
+            padding: 3em;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .ui.header {
+            margin-top: 0;
+        }
+        .ui.menu .item.header {
+            font-size: 1.8em;
+        }
+        .features {
+            margin-top: 50px;
+        }
+        .feature {
+            margin-bottom: 50px;
+        }
+        .ui.primary.button {
+            background-color: #f2711c;
+            color: #fff;
+        }
+        .ui.primary.button:hover {
+            background-color: #d9531d;
+        }
+        .ui.inverted.menu.fixed {
+            background-color: #f2711c;
+            border-radius: 0;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            margin-top: 50px;
+            text-align: center;
+        }
+        footer a {
+            color: #f2711c;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .about-us, .contact-info {
+            padding: 2em 0;
+            text-align: center;
+        }
+        .contact-info p {
+            margin: 0.5em 0;
+        }
+        .social-icons a {
+            color: #f2711c;
+            margin: 0 10px;
+            font-size: 1.5em;
+        }
+    </style>
+<body>
+    <!-- Barra de navegación -->
+    <div class="ui inverted menu fixed">
+        <div class="ui container">
+            <a href="/" class="header item">
+                <i class="bus icon"></i> Viajes
+            </a>
+            <a th:href="@{/usuarios/login}" class="item">Iniciar Sesión</a>
+        </div>
+    </div>
+
+    <div class="ui container">
+        <div class="ui segment">
+            <h1 class="ui header">Bienvenido </h1>
+            <p>Reserva tus pasajes de autobús de manera rápida y fácil con nuestra plataforma en línea.</p>
+        </div>
+
+        <div class="features">
+            <div class="ui segment feature">
+                <h2 class="ui header">Regístrate y comienza a viajar</h2>
+                <p>Con una cuenta en nuestra plataforma, podrás acceder a una amplia gama de servicios, como:</p>
+                <ul>
+                    <li>Reservar pasajes de autobús en línea de manera rápida y segura.</li>
+                    <li>Administrar y consultar todas tus compras en un solo lugar.</li>
+                    <li>Recibir notificaciones y alertas sobre tus próximos viajes.</li>
+                    <li>Acceder a ofertas y descuentos exclusivos para usuarios registrados.</li>
+                    <li>Guardar tus rutas y destinos favoritos para futuras reservas.</li>
+                    <li>Soporte y asistencia personalizada 24/7 para cualquier consulta o inconveniente.</li>
+                </ul>
+                <p>Registrarse es fácil y rápido. Haz clic en el botón a continuación y comienza tu viaje con nosotros.</p>
+                <a class="ui primary button" th:href="@{/usuarios/registro}">Registrarse</a>
+            </div>
+
+      <div class="ui segment feature">
+    <h2 class="ui header">Explora nuestras rutas</h2>
+    <p>Descubre nuestras rutas disponibles y encuentra la mejor opción para tu próximo viaje. Desde destinos locales hasta viajes de larga distancia, tenemos todo cubierto.</p>
+    
+    <!-- Lista de viajes -->
+    <style>
+        .custom-cards {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .custom-card {
+            border-radius: 10px;
+            margin: 10px;
+            border: 1px solid #ddd; /* Borde opcional */
+        }
+    </style>
+
+    <div class="ui four cards custom-cards">
+        <!-- Itera sobre los viajes -->
+        <div class="raised card custom-card" th:each="travel : ${travels}">
+            <div class="image">
+                <img th:src="${travel.urlImage}" alt="..." style="max-width: 200px;">
+            </div>
+            <div class="content">
+                <a class="header" th:href="@{'/travels/' + ${travel.id}}" th:text="${travel.nombre}"></a>
+            
+            </div>
+        </div>
+    </div>
+    
+    <a class="ui primary button" th:href="@{/rutas/otra2}">Ver Rutas</a>
+</div>
+      
+
+            
+        </div>
+
+    <div class="ui segment about-us">
+    <h2 class="ui header">Sobre Nosotros</h2>
+    <p>Somos líderes en la industria del transporte de autobuses, ofreciendo los mejores servicios para tu comodidad y seguridad. Nuestro objetivo es facilitar tus viajes y hacer que disfrutes del camino tanto como del destino.</p>
+    
+    <h3>Autobuses Disponibles:</h3>
+    <div class="ui slider">
+        <div class="ui cards">
+            <!-- Aquí se mostrarán los autobuses -->
+            <div class="card" th:each="autobus : ${autobuses}">
+                <div class="image">
+                    <img class="ui image" style="height: 200px;" th:src="${autobus.imagen}" alt="Imagen de Autobús">
+                </div>
+                <div class="content">
+                    <a class="header" th:text="${autobus.nombre}"></a>
+                    <div class="description" th:text="${autobus.modelo}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+       
+
+        <div class="ui segment contact-info">
+            <h2 class="ui header">Información de Contacto</h2>
+            <p><i class="phone icon"></i> +573165125962</p>
+            <p><i class="envelope icon"></i>brayanstevenmoreno@uts.edu.co</p>
+               <p><i class="envelope icon"></i>mosoto231242@gmail.com</p>
+            <div class="social-icons">
+                <a href="#"><i class="facebook icon"></i></a>
+                <a href="#"><i class="twitter icon"></i></a>
+                <a href="#"><i class="instagram icon"></i></a>
+                <a href="#"><i class="linkedin icon"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="ui container">
+            <p>&copy; 2024 Gestión de Autobuses. Todos los derechos reservados. Brayan Steven Moreno Soto</p>
+            <p>
+                <a href="/privacidad">Política de Privacidad</a> | 
+                <a href="/terminos">Términos de Servicio</a> | 
+                <a href="/con/contacto">Contacto</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

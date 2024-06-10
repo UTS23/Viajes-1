@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Lista de Compras</h1>
+            <table class="table is-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Usuario ID</th>
+                        <th>Ruta ID</th>
+                        <th>Fecha de Compra</th>
+                        <th>Origen</th>
+                        <th>Destino</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="compra : ${compras}">
+                        <td th:text="${compra.id}">ID</td>
+                        <td th:text="${compra.usuarioId}">Usuario ID</td>
+                        <td th:text="${compra.rutaId}">Ruta ID</td>
+                        <td th:text="${#dates.format(compra.fechaCompra, 'yyyy-MM-dd HH:mm:ss')}">Fecha de Compra</td>
+                        <td th:text="${compra.origen}">Origen</td>
+                        <td th:text="${compra.destino}">Destino</td>
+                        <td th:text="${compra.precio}">Precio</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </section>
+</body>
+</html>
+

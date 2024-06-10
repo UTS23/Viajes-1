@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Contactos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <style>
+        /* Estilos adicionales */
+        body {
+            background-color: #f5f5f5;
+            padding-top: 40px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .btn-regresar {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<section class="section">
+    <div class="container">
+        <h1 class="title">Lista de Contactos</h1>
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Profesión</th>
+                    <th>Imagen</th>
+                    <th>Descripción</th>
+                    <th>Correo Electrónico</th>
+                    <th>Número de Teléfono</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Iterar sobre los contactos -->
+                <tr th:each="contacto : ${contactos}">
+                    <td th:text="${contacto.nombre}"></td>
+                    <td th:text="${contacto.edad}"></td>
+                    <td th:text="${contacto.profesion}"></td>
+                    <td>
+                        <img th:src="${contacto.imagen}" alt="Imagen de Contacto" style="max-width: 100px;">
+                    </td>
+                    <td th:text="${contacto.descripcion}"></td>
+                    <td th:text="${contacto.numeroTelefono}"></td>
+                    <td th:text="${contacto.numeroTelefono}"></td>
+                 
+                </tr>
+                <!-- Fin de la iteración -->
+            </tbody>
+        </table>
+        <!-- Botón de regreso -->
+        <a href="/dashboard" class="button is-primary btn-regresar">Regresar</a>
+    </div>
+</section>
+
+</body>
+</html>
+
+

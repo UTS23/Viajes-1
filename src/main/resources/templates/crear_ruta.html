@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Crear Ruta</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .ui.form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .ui.form label {
+            font-weight: bold;
+        }
+        .ui.form input[type="text"],
+        .ui.form input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .ui.form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .ui.form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    
+    <form class="ui form" th:action="@{/rutas/crear}" th:object="${ruta}" method="post">
+    <h1 class="ui header">Crear Ruta</h1>
+        <div class="field">
+            <label for="origen">Origen:</label>
+            <input type="text" id="origen" th:field="*{origen}" />
+        </div>
+        <div class="field">
+            <label for="destino">Destino:</label>
+            <input type="text" id="destino" th:field="*{destino}" />
+        </div>
+        <div class="field">
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" th:field="*{fecha}" />
+        </div>
+        <div class="field">
+            <label for="horaSalida">Hora de Salida:</label>
+            <input type="time" id="horaSalida" th:field="*{horaSalida}" />
+        </div>
+        <div class="field">
+            <label for="precio">Precio:</label>
+            <input type="text" id="precio" th:field="*{precio}" />
+        </div>
+        <button type="submit" class="ui button">Crear</button>
+    </form>
+</body>
+</html>

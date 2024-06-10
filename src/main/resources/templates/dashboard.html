@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard de Compras</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+        .ui.container {
+            margin-top: 20px;
+        }
+        .content {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            width: 100%;
+            max-width: 1200px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .sidebar {
+            width: 250px;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+        }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+        .ui.menu .item.header {
+            font-size: 1.5em;
+        }
+        .ui.menu .item {
+            padding: 10px 0;
+        }
+        .ui.menu .item.active {
+            background-color: #ddd !important;
+        }
+        .top-bar {
+            background-color: #fff;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-bar .logout-button {
+            margin-left: auto;
+        }
+        .top-bar h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        .data-table {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <h2>Dashboard de Compras</h2>
+        <button class="ui red button logout-button">Cerrar Sesión</button>
+    </div>
+    <div class="ui container">
+        <div class="content">
+            <div class="sidebar">
+                <div class="ui vertical menu">
+                    <a th:href="@{/usuarios/users}" class="item">Gestionar Usuarios</a>
+                    <a th:href="@{/admin/orders}" class="item active">Ver Compras</a>
+                    <a th:href="@{/rutas}" class="item">Rutas</a>
+                      <a th:href="@{/api/autobuses/bus}" class="item">Buses</a>
+                    <a th:href="@{/estadisticas}" class="item">Estadísticas</a>
+                      <a th:href="@{/con/listar}" class="item">Contacto</a>
+                       <a th:href="@{/travels}" class="item">Lugares</a>
+                    <a th:href="@{/configuracion}" class="item">Configuración</a>
+                </div>
+            </div>
+            <div class="main-content">
+                <h1 class="ui header">Compras de Usuario</h1>
+
+                <!-- Sección de Tabla de Datos -->
+                <div class="data-table">
+                    <h2 class="ui header">Últimas Compras</h2>
+                    <table class="ui celled table">
+                        <thead>
+                            <tr>
+                                <th>ID de Compra</th>
+                            
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="compra : ${compras}">
+                                <td th:text="${compra.id}"></td>
+                              
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('.logout-button').on('click', function() {
+                window.location.href = '/';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .ui.form {
+            width: 400px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .ui.form h2.header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .ui.form .field {
+            margin-bottom: 20px;
+        }
+        .ui.form button.ui.button {
+            width: 100%;
+        }
+        .ui.form .ui.button.secondary {
+            margin-top: 10px;
+        }
+        .ui.form .ui.error.message {
+            display: none;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form class="ui form error" th:action="@{/usuarios/login}" method="post">
+        <h2 class="ui header">Iniciar Sesión</h2>
+        <div class="field">
+            <label>Correo Electrónico</label>
+            <input type="text" name="correo" placeholder="Correo Electrónico">
+        </div>
+        <div class="field">
+            <label>Contraseña</label>
+            <input type="password" name="contraseña" placeholder="Contraseña">
+        </div>
+        <div class="ui error message"></div>
+        <button class="ui primary button" type="submit">Iniciar Sesión</button>
+        <a class="ui secondary button" th:href="@{/usuarios/registro}">Registrarse</a>
+    </form>
+</body>
+</html>
+

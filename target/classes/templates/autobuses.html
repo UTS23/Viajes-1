@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Autobuses</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Lista de Autobuses</h1>
+            <table class="table is-fullwidth is-striped is-hoverable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Modelo</th>
+                        <th>Capacidad</th>
+                        <th>Imagen</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="autobus : ${autobuses}">
+                        <td th:text="${autobus.id}">ID</td>
+                        <td th:text="${autobus.nombre}">Nombre</td>
+                        <td th:text="${autobus.modelo}">Modelo</td>
+                        <td th:text="${autobus.capacidad}">Capacidad</td>
+                        <td><img th:src="${autobus.imagen}" alt="Imagen de Autobus" style="max-width: 100px;"></td>
+                        <td>
+                            <div class="buttons">
+                             <a class="button is-info" th:href="@{/api/autobuses/editar/{id}(id=${autobus.id})}">Editar Autobús</a>
+                             
+                                <form th:action="@{/api/autobuses/eliminar/{id}(id=${autobus.id})}" method="post" style="display:inline;">
+                                    <button type="submit" class="button is-danger">Eliminar Autobús</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <a class="button is-success" href="/api/autobuses/crear">Crear Autobús</a>
+            <a class="button is-danger" href="/dashboard">Regresar</a>
+        </div>
+    </section>
+</body>
+</html>
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear Autobús</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Crear Autobús</h1>
+            <form action="/api/autobuses/crear" method="post">
+                <div class="field">
+                    <label class="label" for="nombre">Nombre:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="nombre" name="nombre" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="modelo">Modelo:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="modelo" name="modelo" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="capacidad">Capacidad:</label>
+                    <div class="control">
+                        <input class="input" type="number" id="capacidad" name="capacidad" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="imagen">Imagen URL:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="imagen" name="imagen">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <input class="button is-success" type="submit" value="Crear Autobús">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

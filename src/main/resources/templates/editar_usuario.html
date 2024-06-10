@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuario</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="mb-4">Editar Usuario</h1>
+    <form th:action="@{/usuarios/editar/{id}(id=${usuario.id})}" method="post">
+        <input type="hidden" name="id" th:value="${usuario.id}">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" th:value="${usuario.nombre}">
+        </div>
+        <div class="form-group">
+            <label for="correo">Correo:</label>
+            <input type="email" class="form-control" id="correo" name="correo" th:value="${usuario.correo}">
+        </div>
+        <div class="form-group">
+            <label for="contraseña">Contraseña:</label>
+            <input type="password" class="form-control" id="contraseña" name="contraseña" th:value="${usuario.contraseña}">
+        </div>
+        <div class="form-group">
+            <label for="rol">Rol:</label>
+            <select class="form-control" id="rol" name="rol">
+                <option value="ADMIN" th:selected="${usuario.rol eq 'ADMIN'}">ADMIN</option>
+                <option value="USER" th:selected="${usuario.rol eq 'USER'}">USER</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+        <a href="/usuarios/users" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+</body>
+</html>

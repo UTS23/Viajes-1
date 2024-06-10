@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Autobús</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Editar Autobús</h1>
+            <form th:action="@{/api/autobuses/editar/{id}}" th:object="${autobus}" method="post">
+                <div class="field">
+                    <label class="label" for="nombre">Nombre:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="nombre" name="nombre" th:value="*{nombre}" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="modelo">Modelo:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="modelo" name="modelo" th:value="*{modelo}" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="capacidad">Capacidad:</label>
+                    <div class="control">
+                        <input class="input" type="number" id="capacidad" name="capacidad" th:value="*{capacidad}" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="imagen">Imagen URL:</label>
+                    <div class="control">
+                        <input class="input" type="text" id="imagen" name="imagen" th:value="*{imagen}">
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <input class="button is-success" type="submit" value="Guardar Cambios">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

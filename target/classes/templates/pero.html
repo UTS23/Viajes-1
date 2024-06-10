@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Rutas</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Lista de Rutas</h1>
+            <div class="columns is-multiline">
+                <div class="column is-one-third" th:each="ruta : ${rutas}">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="content">
+                                <p>
+                                    <strong>Origen:</strong> <span th:text="${ruta.origen}">Origen</span>
+                                </p>
+                                <p>
+                                    <strong>Destino:</strong> <span th:text="${ruta.destino}">Destino</span>
+                                </p>
+                                <p>
+                                    <strong>Fecha:</strong> <span th:text="${#dates.format(ruta.fecha, 'yyyy-MM-dd')}">Fecha</span>
+                                </p>
+                                <p>
+                                    <strong>Hora de salida:</strong> <span th:text="${#strings.substring(ruta.horaSalida, 0, 5)}">Hora de salida</span>
+                                </p>
+                                <p>
+                                    <strong>Precio:</strong> <span th:text="${ruta.precio}">Precio</span>
+                                </p>
+                                <div class="button-container">
+                                   <form th:action="@{/compras/realizar}" method="post">
+                                       <input type="hidden" name="rutaId" th:value="${ruta.id}">
+                                       <input type="hidden" name="usuarioId" th:value="${compra?.usuarioId}">
+                                       <button class="button is-primary" type="submit">Comprar</button>
+                                   </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
